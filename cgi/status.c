@@ -1625,6 +1625,10 @@ void show_service_detail(void) {
 		/* if we couldn't find the service, go to the next service */
 		if(temp_service == NULL)
 			continue;
+		
+		// Mod Maxw Check if the service or host should be hidden based on their names
+		if (strstr(temp_status->description, "hide_") == temp_status->description || strstr(temp_status->host_name, "hide_") == temp_status->host_name)
+			continue;
 
 		/* find the host */
 		temp_host = find_host(temp_service->host_name);
